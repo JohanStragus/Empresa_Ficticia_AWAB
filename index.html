@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testeando</title>
+    <title>Empresa Ficticia</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    
+    <!-- Encabezado de la página -->
+    <header role="banner">
+        <!-- Navegación de la página -->
+        <nav role="navigation">
+            <!-- Lista de navegación -->
+            <ul>
+                <li><a href="#index">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main role="main">
+        <!-- Sección deL Carousel -->
+        <section id="inicio" class="carousel" role="region" aria-label="Carousel">
+            <!-- Container Carousel entero -->
+            <div class="carousel-container">
+                <!-- 1. SLIDE -->
+                <div class="carousel-slide">
+                    <img src="img/super_mario_bros.jpg" alt="Super Mario Bros">
+                </div>
+                <!-- 2. SLIDE -->
+                <div class="carousel-slide">
+                    <img src="img/zelda.jpg" alt="Zelda Tears of the Kingdom">
+                </div>
+                <!-- 3. SLIDE -->
+                <div class="carousel-slide">
+                    <img src="img/Xenoblade_Chronicles2.jpg" alt="Xenoblade_Chronicles2">
+                </div>
+            </div>
+            <!-- Botones de navegación del Carousel -->
+            <button class="prev" onclick="moveSlide(-1)" aria-label="Anterior">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)" aria-label="Siguiente">&#10095;</button>
+        </section>
+
+
+        <!-- Sección donde irán varios div en cada div tendrá un contenido diferente, ejemplo: "historia empresa", "productos", "Contacto" "footer"-->
+
+    </main>
+
 </body>
+
+<!-- SCRIPT CAROUSEL-->
+<script>
+    let currentIndex = 0;
+
+    function moveSlide(direction) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+        document.querySelector('.carousel-container').style.transform = `translateX(${-currentIndex * 100}vw)`;
+    }
+    setInterval(() => moveSlide(1), 5000); // Cambio automático cada 5 segundos
+</script>
+
 </html>
