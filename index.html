@@ -49,10 +49,30 @@
 
 
         <!-- Sección donde irán varios div en cada div tendrá un contenido diferente, ejemplo: "historia empresa", "productos", "Contacto" "footer"-->
+        <br>
+        <div id="formDiv">
+            <form id="form" class="border rounded my-4 p-5">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input id="email" type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="textArea">Text</label>
+                    <textarea class="form-control" id="textArea"></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning">Submit</button>
+              </form>
+        </div>
 
     </main>
 
 </body>
+
+<footer class="p-2" role="footer">
+    
+    <p>&copy; 2025 NoEntendo. Todos los derechos reservados.</p>
+
+</footer>
 
 <!-- SCRIPT CAROUSEL-->
 <script>
