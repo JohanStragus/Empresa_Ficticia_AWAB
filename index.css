@@ -1,5 +1,5 @@
  /* ESTILOS GENERALES */
-* {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -84,4 +84,30 @@ nav ul li a:hover {
 
 .next {
     right: 10px;
+}
+
+/* FORM */
+#formDiv{
+    width: 40rem;
+    margin: auto;
+}
+#form{
+    background: #e80a0a;
+}
+
+label{
+    color: white;
+    font-weight: bold;
+
+}
+
+/* FOOTER */
+footer {
+    background: #e80a0a;
+    padding: 15px 0;
+    text-align: center;
+}
+
+footer p {
+    color: white;
 }
