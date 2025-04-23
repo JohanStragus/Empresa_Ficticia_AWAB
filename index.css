@@ -16,7 +16,7 @@ body {
 
 /* HEADER */
 header {
-    background: #e80a0a;
+    background: #ed3a3a;
     padding: 5px 2rem;
     margin-bottom: -13px;
 }
@@ -67,10 +67,11 @@ nav ul li a:hover {
 /* SECCIÓN CAROUSEL */
 .carousel {
     position: relative;
-    width: 100vw;
-    height: 500px;
+    width:100%;
+    height: 450px;
     overflow: hidden;
 }
+
 
 .carousel-container {
     display: flex;
@@ -143,7 +144,7 @@ nav ul li a:hover {
 }
 
 #form {
-    background: #e80a0a;
+    background: #ed3a3a;
 }
 
 label {
@@ -154,7 +155,7 @@ label {
 
 /* FOOTER */
 footer {
-    background: #e80a0a;
+    background: #ed3a3a;
     padding: 15px 0;
     text-align: center;
 }
