@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresa Ficticia</title>
     <link rel="stylesheet" href="index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pjwELK+6o1jqxnLr+asfGKwC0mOJejK5j5tXhAbD+HxucZ2BhDp7WFsZV0UMLnLd"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!-- Encabezado de la página -->
-    <header role="banner">
+    <header>
         <!-- Navegación de la página -->
-        <nav role="navigation">
+        <nav aria-label="Navegación principal">
+
+            <!-- Logo de la empresa -->
+            <img src="img/NoEntendo_Logo2.png" alt="NoEntiendo, logo de la empresa" class="logo">
+            
             <!-- Lista de navegación -->
             <ul>
                 <li><a href="#index">Inicio</a></li>
@@ -27,51 +34,76 @@
 
     <!-- MAIN -->
     <main role="main">
+
         <!-- Sección deL Carousel -->
-        <section id="inicio" class="carousel" role="region" aria-label="Carousel">
+        <section id="inicio" class="carousel" role="region" aria-label="Carrusel de juegos" aria-live="polite">
             <!-- Container Carousel entero -->
             <div class="carousel-container">
                 <!-- 1. SLIDE -->
-                <div class="carousel-slide">
+                <div class="carousel-slide" aria-hidden="false" aria-current="true">
                     <img src="img/super_mario_bros.jpg" alt="Super Mario Bros">
                 </div>
                 <!-- 2. SLIDE -->
-                <div class="carousel-slide">
+                <div class="carousel-slide" aria-hidden="true">
                     <img src="img/zelda.jpg" alt="Zelda Tears of the Kingdom">
                 </div>
                 <!-- 3. SLIDE -->
-                <div class="carousel-slide">
+                <div class="carousel-slide" aria-hidden="true">
                     <img src="img/Xenoblade_Chronicles2.jpg" alt="Xenoblade_Chronicles2">
                 </div>
             </div>
             <!-- Botones de navegación del Carousel -->
-            <button class="prev" onclick="moveSlide(-1)" aria-label="Anterior">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)" aria-label="Siguiente">&#10095;</button>
+            <button class="prev" onclick="moveSlide(-1)" aria-label="Ir al slide anterior">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)" aria-label="Ir al siguiente slide">&#10095;</button>
+        </section>
+
+        <!-- SECCIÓN CUATRO IMÁGENES -->
+        <section id="galeria" class="gallery" role="region" aria-label="Galería de imágenes">
+            <!-- IMAGEN 1-->
+            <div class="gallery-item" aria-label="Imagen del juego Metroid Prime">
+                <img src="img/Metroid_Prime.jfif" alt="Metroid Prime">
+                <p>Metroid Prime</p>
+            </div>
+            <!-- IMAGEN 2-->
+            <div class="gallery-item" aria-label="Imagen del Tears of the Kingdom">
+                <img src="img/tears_kingdom.webp" alt="Tears of the Kingdom">
+                <p>Zelda Tears of Kingdom</p>
+            </div>
+            <!-- IMAGEN 3-->
+            <div class="gallery-item" aria-label="Imagen del juego Fire Emblem Fates">
+                <img src="img/fire_emblem.jpg" alt="Fire Emblem Fates">
+                <p>Fire Emblem Fates</p>
+            </div>
+            <!-- IMAGEN 4-->
+            <div class="gallery-item" aria-label="Imagen del juego Pokemon Escarlata y Purpura">
+                <img src="img/pokemon.jpg" alt="Pokemon scarlata y purpura">
+                <p>Pokemon Escarlata y Purpura</p>
+            </div>
         </section>
 
 
         <!-- Sección donde irán varios div en cada div tendrá un contenido diferente, ejemplo: "historia empresa", "productos", "Contacto" "footer"-->
         <br>
         <div id="formDiv">
-            <form id="form" class="border rounded my-4 p-5">
+            <form id="form" role="form" aria-labelledby="formTitle" class="border rounded my-4 p-5">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input id="email" type="email" class="form-control" aria-describedby="emailHelp">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" type="email" class="form-control" aria-required="true">
                 </div>
                 <div class="mb-3">
                     <label for="textArea">Text</label>
-                    <textarea class="form-control" id="textArea"></textarea>
+                    <textarea class="form-control" id="textArea" aria-required="true"></textarea>
                 </div>
                 <button type="submit" class="btn btn-warning">Submit</button>
-              </form>
+            </form>
         </div>
 
     </main>
 
 </body>
 
-<footer class="p-2" role="footer">
-    
+<footer class="p-2" role="contentinfo" aria-label="Pie de página">
+
     <p>&copy; 2025 NoEntendo. Todos los derechos reservados.</p>
 
 </footer>
@@ -84,10 +116,28 @@
         const slides = document.querySelectorAll('.carousel-slide');
         const totalSlides = slides.length;
 
+        // Ocultar todos los slides
+        slides.forEach(slide => {
+            slide.setAttribute('aria-hidden', 'true');
+            slide.removeAttribute('aria-current');
+        });
+
+        // Calcular el nuevo índice
         currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+
+        // Mostrar el slide actual
+        slides[currentIndex].setAttribute('aria-hidden', 'false');
+        slides[currentIndex].setAttribute('aria-current', 'true');
+
+        // Mover el carrusel visualmente
         document.querySelector('.carousel-container').style.transform = `translateX(${-currentIndex * 100}vw)`;
     }
+
     setInterval(() => moveSlide(1), 5000); // Cambio automático cada 5 segundos
+
+    // Inicializar estado accesible
+    document.addEventListener('DOMContentLoaded', () => moveSlide(0));
 </script>
+
 
 </html>
